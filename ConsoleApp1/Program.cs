@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 public class Program
 {
     public static void Main()
@@ -8,20 +8,19 @@ public class Program
         bool isValid;
 
         Console.WriteLine("\nEnter 'Blessing' to quit the program at any time\n");
-        while (true)
-            do
-            {
-                Console.Write("Enter integer : ");
-                input = Console.ReadLine();
-                isValid = int.TryParse(input, out number);
-                if (!isValid)
-                    Console.WriteLine("\n  Not an integer, please try again\n");
-                else
-                    Console.WriteLine("\n  {0}\n", NumberToText(number));
-            }
-            while (!(isValid && number == 0));
 
-        Console.WriteLine("\nProgram ended");
+        while (true)
+        
+        {
+            Console.Write("Enter integer : ");
+            input = Console.ReadLine();
+            isValid = int.TryParse(input, out number);
+            if (!isValid)
+                Console.WriteLine("\n  Not an integer, please try again\n");
+            else
+                Console.WriteLine("\n  {0}\n", NumberToText(number));
+        }
+                
 
     }
     public static string NumberToText(int number)
@@ -43,12 +42,12 @@ public class Program
         string[] words1 = { "Ten ", "Eleven ", "Twelve ", "Thirteen ", "Fourteen ", "Fifteen ", "Sixteen ", "Seventeen ", "Eighteen ", "Nineteen " };
         string[] words2 = { "Twenty ", "Thirty ", "Forty ", "Fifty ", "Sixty ", "Seventy ", "Eighty ", "Ninety " };
         string[] words3 = { "Thousand ", "Million ", "Billion " };
-        num[0] = number % 1000;           // units
+        num[0] = number % 1000;           
         num[1] = number / 1000;
         num[2] = number / 1000000;
-        num[1] = num[1] - 1000 * num[2];  // thousands
-        num[3] = number / 1000000000;     // billions
-        num[2] = num[2] - 1000 * num[3];  // millions
+        num[1] = num[1] - 1000 * num[2];  
+        num[3] = number / 1000000000;     
+        num[2] = num[2] - 1000 * num[3];  
         for (int i = 3; i > 0; i--)
         {
             if (num[i] != 0)
@@ -60,14 +59,16 @@ public class Program
         for (int i = first; i >= 0; i--)
         {
             if (num[i] == 0) continue;
-            u = num[i] % 10;              // ones
+            u = num[i] % 10;              
             t = num[i] / 10;
-            h = num[i] / 100;             // hundreds
-            t = t - 10 * h;               // tens
+            h = num[i] / 100;             
+            t = t - 10 * h; 
+            
             if (h > 0) sb.Append(words0[h] + "Hundred ");
+
             if (u > 0 || t > 0)
             {
-                if (h > 0 || i < first) sb.Append(t);
+                
                 if (t == 0)
                     sb.Append(words0[u]);
                 else if (t == 1)
@@ -80,3 +81,8 @@ public class Program
         return sb.ToString().TrimEnd();
     }
 }
+
+
+
+
+
